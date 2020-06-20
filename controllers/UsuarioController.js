@@ -1,26 +1,32 @@
+var bcrypt = require('bcrypt')
 const Usuario = require("./../models").Usuario
 
-function registro(req, res) {
+function formNuevoUsuario(req, res) {
+    res.render("admin/usuario/nuevo")
+}
 
-    var email = req.body.email;
-    var consulta = Usuario.findOne({where: {email}}).then((existe =>{
-        if(existe){
-            res.json({msg: "usuario ya existe"})
-        }
-        
-    }));
-    console.log(consulta)
-    
+
+function registro(req, res) {
+      
     var u = {
         email: req.body.email,
-        password: req.body.password
+        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)) 
     }
 
     Usuario.create(u)
+    .then(() => {
+        res.json({msg: "usuario Registrado Correctamente"})
+    }).catch((error) => {
+        console.log(error.errors.map(error => error.message));
+        res.render("admin/usuario/nuevo", {
+            error: error.errors.map(error => error.message)
+        })
+    })
 
-    res.json({msg: "usuario Registrado"})
+    
 }
 
 module.exports = {
-    registro
+    registro,
+    formNuevoUsuario
 }

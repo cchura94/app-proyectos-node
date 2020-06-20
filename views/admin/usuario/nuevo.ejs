@@ -1,0 +1,19 @@
+<h1>Nuevo Usuario</h1>
+
+
+<% if(locals.error){ %>
+
+    <h5><%= locals.error  %></h5>
+
+<% } %>
+
+<form action="/usuario/registro" method="post">
+    <label for="">Ingrese Correo: </label>
+    <input type="email" name="email" required>
+    <br>
+    <label for="">Ingrese Contraseña: </label>
+    <input type="password" name="password" required>
+    <br>
+    <input type="submit">       
+
+</form>
