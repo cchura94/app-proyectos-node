@@ -1,5 +1,9 @@
 <h1>Inicio de Sesión</h1>
 
+<% if(locals){ %>
+    <%= locals.error %>
+<% } %>
+
 <form action="/ingresar" method="post">
     <label for="">Ingrese su correo:</label>
     <input type="email" name="email">

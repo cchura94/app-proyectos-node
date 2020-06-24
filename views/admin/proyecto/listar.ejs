@@ -1,0 +1,34 @@
+<h1>Lista de Proyectos</h1>
+
+
+<a href="/proyecto/crear">Nuevo Proyecto</a>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>NOMBRE</th>
+      <th>DETALLE</th>
+      <th>URL</th>
+      <th>ACCIONES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% proyectos.forEach(function(proy){ %>
+    <tr>
+      <td><%= proy.id %></td>
+      <td><%= proy.nombre %></td>
+      <td><%= proy.detalle %></td>
+      <td><%= proy.url %></td>
+      <td>
+        <a href="/proyecto/<%= proy.id %>">ver</a>
+        <a href="/proyecto/<%= proy.id %>/editar">editar</a>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+
+
+</table>
+
+
+    
