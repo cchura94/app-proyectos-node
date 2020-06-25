@@ -1,0 +1,30 @@
+<h1>Lista de Actividades</h1>
+
+<a href="/actividad/crear"> Nueva Actividad</a>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>DESCRIPCION</th>
+            <th>ESTADO</th>
+            <th>PROYECTO</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% actividades.forEach(function(act){ %>
+        <tr>
+            <td><%= act.id %></td>
+            <td><%= act.titulo %></td>
+            <td><%= act.descripcion %></td>
+            <td><%= act.estado %></td>
+            <td><%= act.proyecto_id %></td>
+            <td>
+                
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+
+</table>

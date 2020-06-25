@@ -1,0 +1,21 @@
+
+<% if(proyecto){ %>
+
+<h1>Editar Proyecto</h1>
+
+<form action="/proyecto/<%= proyecto.id %>" method="post">
+    <label for="">Nombre: </label>
+    <input type="text" name="nombre" value="<%= proyecto.nombre %>">
+    <br>
+    <label for="">Detalle: </label>
+    <input type="text" name="detalle" value="<%= proyecto.detalle %>">
+    <br>
+    <label for="">URL: </label>
+    <input type="text" name="url" value="<%= proyecto.url %>">
+    <br>
+    <input type="submit">
+</form>
+    
+<% }else{ %>
+    <h2>No existe el proyecto</h2>
+<% } %>

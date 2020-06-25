@@ -1,35 +1,35 @@
-var Proyecto = require("./../models/index").Proyecto
+var Actividad = require("./../models/index").Actividad
 
 //GET
 function listar(req, res) {
-    Proyecto.findAll().then((lista) => {
+    Actividad.findAll().then((lista) => {
         //console.log(lista);
-        res.render("admin/proyecto/listar", {proyectos: lista})
+        res.render("admin/actividad/listar", {actividades: lista})
     });
 }
 
 //GET
 function crear(req, res) {
-    res.render("admin/proyecto/crear")
+    res.render("admin/actividad/crear")
 }
 
 //POST GUARDAR
 function guardar(req, res) {
-    Proyecto.create(req.body).then(() => {
-        res.redirect("/proyecto");
+    Actividad.create(req.body).then(() => {
+        res.redirect("/actividad");
     })
 }
 
 //GET
 function mostrar(req, res) {
-    Proyecto.findOne({
+    Actividad.findOne({
         where: {
             id: req.params.id
         }
     }).then((dato) => {
         //console.log(dato);
         //res.json(dato);
-        res.render("admin/proyecto/mostrar", {proyecto: dato})
+        res.render("admin/actividad/mostrar", {actividad: dato})
     })
     //res.send(req.params.id)
 }
@@ -37,14 +37,14 @@ function mostrar(req, res) {
 //GET
 
 function editar(req, res) {
-    Proyecto.findOne({
+    Actividad.findOne({
         where: {
             id: req.params.id
         }
     }).then((dato) => {
         //console.log(dato);
         //res.json(dato);
-        res.render("admin/proyecto/editar", {proyecto: dato})
+        res.render("admin/actividad/editar", {actividad: dato})
     })
 }
 
@@ -58,6 +58,7 @@ function eliminar(req, res) {
     
 }
 
+
 module.exports = {
     listar,
     crear,
@@ -66,5 +67,4 @@ module.exports = {
     editar,
     modificar,
     eliminar
-
 }
