@@ -14,7 +14,7 @@ router.get("/:id", proyectoController.mostrar);
 // CARGAR UN FORMULARIO DE EDICION con datos llenados
 router.get("/:id/editar", proyectoController.editar);
 // MODIFICAR LOS DATOS
-router.post("/:id", proyectoController.modificar);
+router.put("/:id", proyectoController.modificar);
 // ELIMINAR
 router.delete("/:id", proyectoController.eliminar);
 

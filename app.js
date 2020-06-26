@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//Habilitar el layout base de nuestra pagina
+var expressLayout = require('express-ejs-layouts') 
 //Importando la configuración de conexion de base de datos
 var db = require('./db')
 
@@ -20,6 +22,8 @@ var proyectoRouter = require('./routes/proyectos');
 var actividadesRouter = require('./routes/Actividades');
 
 var app = express();
+
+app.use(expressLayout);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

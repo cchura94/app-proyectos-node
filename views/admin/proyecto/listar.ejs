@@ -1,8 +1,8 @@
 <h1>Lista de Proyectos</h1>
 
 
-<a href="/proyecto/crear">Nuevo Proyecto</a>
-<table border="1">
+<a href="/proyecto/crear"  class="btn btn-primary ">Nuevo Proyecto</a>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>ID</th>
@@ -20,8 +20,8 @@
       <td><%= proy.detalle %></td>
       <td><%= proy.url %></td>
       <td>
-        <a href="/proyecto/<%= proy.id %>">ver</a>
-        <a href="/proyecto/<%= proy.id %>/editar">editar</a>
+        <a href="/proyecto/<%= proy.id %>" class="btn btn-success ">ver</a>
+        <a href="/proyecto/<%= proy.id %>/editar"  class="btn btn-warning ">editar</a>
       </td>
     </tr>
     <% }); %>
