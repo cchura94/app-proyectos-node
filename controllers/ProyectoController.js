@@ -1,4 +1,5 @@
 var Proyecto = require("./../models/index").Proyecto
+var Actividad = require("./../models").Actividad
 
 //GET
 function listar(req, res) {
@@ -25,7 +26,9 @@ function mostrar(req, res) {
     Proyecto.findOne({
         where: {
             id: req.params.id
-        }
+        },
+        include: [Actividad]
+
     }).then((dato) => {
         //console.log(dato);
         //res.json(dato);
@@ -58,6 +61,18 @@ function eliminar(req, res) {
     
 }
 
+function agregarActividad(req, res) {
+    var idproyecto = req.params.id;
+    
+    Actividad.create({
+        titulo: req.body.titulo,
+        descripcion: req.body.descripcion,
+        proyecto_id: idproyecto
+    }).then(()=> {
+        res.redirect("/proyecto/"+idproyecto);
+    })
+}
+
 module.exports = {
     listar,
     crear,
@@ -65,6 +80,7 @@ module.exports = {
     mostrar,
     editar,
     modificar,
-    eliminar
+    eliminar,
+    agregarActividad
 
 }

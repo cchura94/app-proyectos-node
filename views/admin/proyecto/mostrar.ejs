@@ -1,11 +1,59 @@
 
 <% if(proyecto){ %>
 
-<%= proyecto.nombre %>
-<br>
-<%= proyecto.detalle %>
-<br>
-<%= proyecto.url %>
+<div class="row">
+    <div class="col-md-6">
+        <h3>DETALLES DE PROYECTO</h3>
+
+        <h4>NOMBRE DE PROYECTO: <%= proyecto.nombre %></h4>
+        <br>
+        <h4>DETALLE:</h4>
+        <p><%= proyecto.detalle %></p>
+
+    </div>
+    <div class="col-md-6">
+        <h3>NUEVA ACTIVIDAD</h3>
+        <form action="/proyecto/<%= proyecto.id %>/nueva-actividad" method="post">
+            <label for="">Ingrese su Titulo</label>
+            <input type="text" name="titulo" class="form-control" placeholder="Ingrese su Titulo" required>
+            <label for="">Ingrese su DESCRIPCION</label>
+            <textarea name="descripcion" class="form-control" placeholder="Ingrese su Descripción"></textarea>
+            
+            <input type="submit" class="btn btn-primary">
+            
+
+        </form>
+    </div>
+</div>
+
+
+
+<h2>Lista de Actividades</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>DESCRIPCION</th>
+            <th>FECHA</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% proyecto.actividades.forEach(function(acti){ %>
+        <tr>
+            <td><%= acti.id %></td>
+            <td><%= acti.titulo %></td>
+            <td><%= acti.descripcion %></td>
+            <td><%= acti.estado %></td>
+            <td></td>
+        </tr>
+        <% }); %>
+    </tbody>
+
+
+</table>
 
 
 <% }else{ %>

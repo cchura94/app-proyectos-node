@@ -1,3 +1,8 @@
+import Swal from 'sweetalert2'
 
-console.log("Hola")
-alert("Prueba")
+/*Swal.fire({
+    title: 'Correcto!',
+    text: 'Funciona!!',
+    icon: 'success',
+    confirmButtonText: 'Cool'
+  })*/

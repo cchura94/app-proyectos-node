@@ -18,5 +18,8 @@ router.put("/:id", proyectoController.modificar);
 // ELIMINAR
 router.delete("/:id", proyectoController.eliminar);
 
+//AGREGAR NUEVA ACTIVIDAD A UN PROYECTO
+router.post("/:id/nueva-actividad", proyectoController.agregarActividad);
+
 
 module.exports = router;
