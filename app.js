@@ -5,8 +5,18 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //Habilitar el layout base de nuestra pagina
 var expressLayout = require('express-ejs-layouts') 
+//Importando express-session para guardar datos en memoria
+var session = require('express-session')
+//Importando connet-flash para envio de mensaje como (errores, mesanjes)
+var flash = require('connect-flash');
+
 //Importando la configuración de conexion de base de datos
 var db = require('./db')
+
+//Importar la configuración de passport
+var passport = require("./config/passport") 
+
+
 
 
 db.sync().then(() => {
@@ -22,7 +32,21 @@ var proyectoRouter = require('./routes/proyectos');
 var actividadesRouter = require('./routes/Actividades');
 
 var app = express();
+//Configuración para la session 
+app.use(session({
+  secret: 'MI_CODIGO_SECRETO',
+  resave: false, //Evita guardar otra sesion
+  saveUninitialized: true //Evita que no sea inicializado 
+}))
 
+//Configuración de connect-flash para mensajes
+app.use(flash())
+
+//COnfigurando passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Configuración de plantilla de diseño base
 app.use(expressLayout);
 
 // view engine setup
