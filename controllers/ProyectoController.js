@@ -53,12 +53,34 @@ function editar(req, res) {
 
 //PUT
 function modificar(req, res) {
-    res.send("Modificando")
+    Proyecto.update({
+        nombre: req.body.nombre,
+        detalle: req.body.detalle,
+        url: req.body.url
+
+      }, {
+        where: {
+          id: req.params.id
+        }
+      }).then(() => {
+          req.flash("mensaje", "Proyecto Modificado");
+            res.redirect("/proyecto");
+      });
+
+      
+    
 }
 
 //DELETE
 function eliminar(req, res) {
-    
+    Proyecto.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(() => {
+        req.flash("mensaje", "Proyecto Eliminado");
+        res.redirect("/proyecto");
+      });
 }
 
 function agregarActividad(req, res) {
@@ -73,6 +95,18 @@ function agregarActividad(req, res) {
     })
 }
 
+
+function eliminar2(req, res) {
+    Proyecto.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(() => {
+        req.flash("mensaje", "Proyecto Eliminado");
+        res.json({status: true, mensaje: "Proyecto Eliminado"});
+      });
+}
+
 module.exports = {
     listar,
     crear,
@@ -81,6 +115,7 @@ module.exports = {
     editar,
     modificar,
     eliminar,
-    agregarActividad
+    agregarActividad,
+    eliminar2
 
 }

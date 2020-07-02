@@ -54,7 +54,13 @@
 
 
 </table>
-
+<hr>
+<form action="/proyecto/eliminar/<%= proyecto.id %>" method="post">
+    <input type="submit" value="Eliminar Proyecto" class="btn btn-danger">
+</form>
+<hr>
+<button id="btn-eliminar-proyecto" data-id_proyecto="<%= proyecto.id %>"  class="btn btn-outline-danger">Eliminar Por AXIOS</button>
+<hr>
 
 <% }else{ %>
     <h2>No existe el proyecto</h2>
