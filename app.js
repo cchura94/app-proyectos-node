@@ -16,6 +16,13 @@ var db = require('./db')
 //Importar la configuración de passport
 var passport = require("./config/passport") 
 
+//COnectando con Mongodb (NoSQL)
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/app-proyectos').then(() => {
+  console.log("MONGO DB CONECTADO")
+}).catch((err) => {
+  console.log("ERROR DE CONECCION MONGODB", err)
+});
 
 
 
@@ -44,7 +51,7 @@ app.use(flash())
 
 //COnfigurando passport
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session(), );
 
 //Configuración de plantilla de diseño base
 app.use(expressLayout);

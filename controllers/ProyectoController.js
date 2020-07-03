@@ -1,17 +1,22 @@
 var Proyecto = require("./../models/index").Proyecto
 var Actividad = require("./../models").Actividad
 
+//PARA MONGO_DB
+var Producto = require("./../models/mongoModelos").Producto
 //GET
 function listar(req, res) {
+   /* const p = new Producto({nombre: "Mesa", cantidad: 12, precio:300})
+    p.save()
+    */
     Proyecto.findAll().then((lista) => {
         //console.log(lista);
-        res.render("admin/proyecto/listar", {proyectos: lista})
+        res.render("admin/proyecto/listar", {proyectos: lista, user: req.user})
     });
 }
 
 //GET
 function crear(req, res) {
-    res.render("admin/proyecto/crear")
+    res.render("admin/proyecto/crear", {user: req.user})
 }
 
 //POST GUARDAR
@@ -32,7 +37,7 @@ function mostrar(req, res) {
     }).then((dato) => {
         //console.log(dato);
         //res.json(dato);
-        res.render("admin/proyecto/mostrar", {proyecto: dato})
+        res.render("admin/proyecto/mostrar", {proyecto: dato, user: req.user})
     })
     //res.send(req.params.id)
 }
@@ -47,7 +52,7 @@ function editar(req, res) {
     }).then((dato) => {
         //console.log(dato);
         //res.json(dato);
-        res.render("admin/proyecto/editar", {proyecto: dato})
+        res.render("admin/proyecto/editar", {proyecto: dato, user: req.user})
     })
 }
 
